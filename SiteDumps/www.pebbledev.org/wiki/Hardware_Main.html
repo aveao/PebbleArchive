@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PebbleDev.org - Hardware</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+</div>
+<div class="container">
+    <a href="Main_Page/index.html"><img src="../images/pebble-logo.png"></a><h1>Hardware</h1>
+</div>
+<div class="container">
+        
+<ul>
+<li> STM32F205RE Cortex M3 CPU (<a rel="nofollow" class="external text" href="http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00237391.pdf">Datasheet</a>)
+<ul>
+<li> 1024KB Flash Memory
+</li>
+<li> RAM between 64kb and 128KB
+</li>
+<li> Pinout: <a href="Hardware/Pinout.html" title="Hardware/Pinout">Hardware/Pinout</a>
+</li>
+</ul>
+</li>
+<li> Micron N25Q032A11ESE40F 32 Mb serial flash (<a rel="nofollow" class="external text" href="http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/N25Q/n25q_32mb_1_8v_65nm.pdf">Datasheet</a>) (SPI1, Chipselect _maybe_ on GPIOA Pin 4)
+</li>
+<li> PAN1316 Bluetooth Module (<a rel="nofollow" class="external text" href="http://www.pedeu.panasonic.de/pdf/174Datasheet.pdf">Datasheet</a>) - (Connected to UART1)
+<ul>
+<li> Texas Instruments CC2560A with CC2564 firmware
+</li>
+</ul>
+</li>
+<li> Sharp LS013B7DH01 Display (<a rel="nofollow" class="external text" href="http://www.sharpmemorylcd.com/resources/LS013B7DH01_Application_Info.pdf">Datasheet</a>) (SPI2, Chipselect on GPIOB Pin 12)
+</li>
+<li> STMicroelectronics LIS3DH Accelerometer (<a rel="nofollow" class="external text" href="http://datasheet.octopart.com/LIS3DH-STMicroelectronics-datasheet-10026716.pdf">Datasheet</a>) - (Connected to I2C1)
+</li>
+<li> Fullriver LiPoly Battery (3.7V 130mAh) -- <a href="Battery_Lifetime_FAQ.html" title="Battery Lifetime FAQ, or &quot;Why doesn't pebble have a fuel gauge?&quot;">Battery Lifetime FAQ, or "Why doesn't pebble have a fuel gauge?"</a>
+</li>
+<li> Freescale Semiconductor Xtrinsic MAG3110 Magnetometer (<a rel="nofollow" class="external text" href="http://www.freescale.com/files/sensors/doc/data_sheet/MAG3110.pdf">Datasheet</a>) (Connected to I2C2)
+</li>
+<li> Unknown Ambient Light Sensor
+</li>
+<li> UART3 - Debug Serial Console
+</li>
+<li> Buttons: 
+<ul>
+<li> All buttons are active-low (e.g. considered pressed when Pin is low)
+</li>
+<li> Back button - GPIOC, Pin 3
+</li>
+<li> Up button - GPIOA, Pin 2
+</li>
+<li> Enter button - GPIOC, Pin 6
+</li>
+<li> Down Button - GPIOA, Pin 1
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/jquery-1.11.3.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

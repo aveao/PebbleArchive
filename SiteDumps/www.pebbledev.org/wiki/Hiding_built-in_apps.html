@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PebbleDev.org - Hiding Built-In Apps</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+</div>
+<div class="container">
+    <a href="Main_Page/index.html"><img src="../images/pebble-logo.png"></a><h1>Hiding Built-In Apps</h1>
+</div>
+<div class="container">
+        
+<p>It is possible, by hacking firmware, to hide certain built-in apps (e.g. watchfaces).
+It will <i>not</i> grant extra banks for installing user apps though.
+</p><p>There is an address table in firmware, which holds links to 11 built-in apps:
+</p>
+<ol>
+<li> [Sliding] Text Watch
+</li>
+<li> Classic Analog
+</li>
+<li> Simplicity
+</li>
+<li> Music
+</li>
+<li> Sports <i>(UUID: 4DAB81A6-D2FC-458A-992C-7A1F3B96A970)</i>
+</li>
+<li> Golf <i>(UUID: CF1E816A-9DB8-4511-BBB8-F60C48CA8FAC)</i>
+</li>
+<li> Alarms
+</li>
+<li> Watchfaces <i>(which displays list of all installed watchfaces)</i>
+</li>
+<li> Settings
+</li>
+<li> Getting Started
+</li>
+<li> Date &amp; Time
+</li>
+</ol>
+<p>Starting address of that table changes between firmware versions. Some known values (as offsets in tintin_fw.bin) are shown below.
+</p><p>Each value takes 4 bytes. One may reposition these values. Also it is possible to remove (disable) some items from that table. The simplest way to skip items from start of table (i.e. watchfaces) is to change byte in loader function from 0 to 4*(number of items to skip).
+Addresses of that byte are also shown in table below.
+</p>
+<table class="table table-bordered">
+<tr>
+<th> Version </th>
+<th> HW </th>
+<th> Table </th>
+<th> "Skip" byte
+</th></tr>
+<tr>
+<td> 1.13.0 </td>
+<td> V2R2 </td>
+<td> 0x36F68
+</td>
+<td rowspan="2"> 0x6FE0
+</td></tr>
+<tr>
+<td> 1.13.0 </td>
+<td> V3R1 </td>
+<td> 0x370C4
+</td></tr>
+<tr>
+<td> 1.14.1 </td>
+<td> V2R2 </td>
+<td> 0x389E0
+</td>
+<td rowspan="2"> 0x75B8
+</td></tr>
+<tr>
+<td> 1.14.1 </td>
+<td> V3R1 </td>
+<td> 0x38B40
+</td></tr>
+<tr>
+<td> 2.0 BETA3 </td>
+<td> V2R2 </td>
+<td> 0x3C424
+</td>
+<td rowspan="2"> 0x1112A
+</td></tr>
+<tr>
+<td> 2.0 BETA3 </td>
+<td> V3R1 </td>
+<td> 0x3C588
+</td></tr></table>
+
+
+
+
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/jquery-1.11.3.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

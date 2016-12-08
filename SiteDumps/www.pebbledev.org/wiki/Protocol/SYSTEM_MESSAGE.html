@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PebbleDev.org - Protocol -  SYSTEM MESSAGE</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+</div>
+<div class="container">
+    <a href="../Main_Page/index.html"><img src="../../images/pebble-logo.png"></a><h1>Protocol -  SYSTEM MESSAGE</h1>
+</div>
+<div class="container">
+        
+
+<p>System message communicates various commands and status related to updating and checking for firmware versions.
+</p>
+<table class="table table-bordered">
+<tr>
+<th> Offset
+</th>
+<th> Size
+</th>
+<th> Description
+</th></tr>
+<tr>
+<td>0x0
+</td>
+<td>0x1
+</td>
+<td> Unknown (Always zero)
+</td></tr>
+<tr>
+<td>0x1
+</td>
+<td>0x1
+</td>
+<td> Command (See <a href="SYSTEM_MESSAGE.html#Commands" title="Protocol/SYSTEM MESSAGE"> Commands</a>)
+</td></tr></table>
+<h2><span class="mw-headline" id="Commands">Commands</span></h2>
+<p>These commands are available. The 'direction' of the commands are not all known yet. (Out means TO Pebble. In means FROM Pebble)
+</p>
+<table class="table table-bordered">
+<tr>
+<th> Command
+</th>
+<th> Name
+</th>
+<th> Direction
+</th></tr>
+<tr>
+<td> 0
+</td>
+<td>FIRMWARE_AVAILABLE
+</td>
+<td>Unknown
+</td></tr>
+<tr>
+<td>1
+</td>
+<td>FIRMWARE_START
+</td>
+<td> Out
+</td></tr>
+<tr>
+<td>2
+</td>
+<td>FIRMWARE_COMPLETE
+</td>
+<td> Out
+</td></tr>
+<tr>
+<td>3
+</td>
+<td>FIRMWARE_FAIL
+</td>
+<td> Out
+</td></tr>
+<tr>
+<td>4
+</td>
+<td> FIRMWARE_UP_TO_DATE
+</td>
+<td> Unknown
+</td></tr>
+<tr>
+<td>5
+</td>
+<td>FIRMWARE_OUT_OF_DATE
+</td>
+<td> Unknown
+</td></tr>
+<tr>
+<td>6
+</td>
+<td>BLUETOOTH_START_DISCOVERABLE
+</td>
+<td> In
+</td></tr>
+<tr>
+<td>7
+</td>
+<td>BLUETOOTH_END_DISCOVERABLE
+</td>
+<td> In
+</td></tr></table>
+
+
+
+
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../../js/jquery-1.11.3.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../js/bootstrap.min.js"></script>
+</body>
+</html>

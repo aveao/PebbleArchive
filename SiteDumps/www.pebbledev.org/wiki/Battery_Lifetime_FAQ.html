@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PebbleDev.org - Battery Lifetime FAQ</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+</div>
+<div class="container">
+    <a href="Main_Page/index.html"><img src="../images/pebble-logo.png"></a><h1>Battery Lifetime FAQ</h1>
+</div>
+<div class="container">
+        
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Battery_Lifetime_FAQ.html#Pebble_Battery_Icons"><span class="tocnumber">1</span> <span class="toctext">Pebble Battery Icons</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Battery_Lifetime_FAQ.html#TL.3BDR_version:"><span class="tocnumber">2</span> <span class="toctext">TL;DR version:</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Battery_Lifetime_FAQ.html#Notes_from_Team_Pebble_on_Reddit"><span class="tocnumber">3</span> <span class="toctext">Notes from Team Pebble on Reddit</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Battery_Lifetime_FAQ.html#References"><span class="tocnumber">4</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Pebble_Battery_Icons">Pebble Battery Icons</span></h2>
+<p>Pebble's firmware has 5 icons to show battery status <a rel="nofollow" class="external text" href="http://help.getpebble.com/customer/portal/articles/996436-pebble-battery-life">shown here</a>.
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="TL.3BDR_version:">TL;DR version:</span></h2>
+<p>The LiPo battery inside the Pebble is a <i>single-cell</i> LiPo battery, and is absolutely tiny in capacity.  The output voltage of LiPo batteries during discharge stays pretty consistent through about 80% of it's charge.  Then it suddenly drops like a brick when the battery is close to "empty".  That's why there isn't a persistent battery status indicator on the pebble.  It would show 100% charged for 6 days, then show 15% charge at 6.5 days, and 0% charge at 7 days.  It would be a useless waste of space on the screen.  Batteries are different enough that if a scale of voltage to battery percentage was used, it would be inaccurate.  It might never show a "full" charge (if the firmware expected the battery to be at 4.72v and it only reached 4.6v).
+</p><p><a rel="nofollow" class="external text" href="http://traxxas.com/forums/showthread.php?496930-The-truth-about-LiPo-batteries">Here's a good read on LiPo battery discharge curves.</a>
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="Notes_from_Team_Pebble_on_Reddit">Notes from Team Pebble on Reddit</span></h2>
+<p><a rel="nofollow" class="external text" href="http://www.reddit.com/r/pebble/comments/1a5hri/nightly_v182215/">An explanation from Team Pebble on Reddit</a>:
+</p>
+<blockquote>"The reason there isn't a persistent battery indicator, as it was explained to me:  
+A persistent indicator wouldn't be accurate. If it were implemented, it would show as "full" until switching to the the 24-hour low battery icon when that event hit, so we opted to not display a persistent icon."</blockquote>
+<p>Extra detail from redditor frank26080115:
+</p>
+<blockquote>this is because the battery discharge voltage curve is mainly flat during the majority of the operating time, making it hard to accurately know the remaining charge at any given moment.
+<p>The flatness of the voltage is a good thing but it makes it a pain in the ass to estimate charge.
+</p><p>Also every battery is slightly different, so every battery has a slightly different curve. The difference is even more pronounced in smaller batteries.
+</p>
+So thus it is easier to just implement one threshold for a "low" warning, it might take more sensitive inputs (more parts) to realize a good meter.</blockquote>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<ul>
+<li> <a rel="nofollow" class="external free" href="http://traxxas.com/forums/showthread.php?496930-The-truth-about-LiPo-batteries">http://traxxas.com/forums/showthread.php?496930-The-truth-about-LiPo-batteries</a>
+</li>
+<li> <a rel="nofollow" class="external free" href="http://forums.getpebble.com/discussion/comment/17421/#Comment_17421">http://forums.getpebble.com/discussion/comment/17421/#Comment_17421</a>
+</li>
+<li> <a rel="nofollow" class="external free" href="http://www.reddit.com/r/pebble/comments/1a5hri/nightly_v182215/">http://www.reddit.com/r/pebble/comments/1a5hri/nightly_v182215/</a>
+</li>
+</ul>
+
+
+
+
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/jquery-1.11.3.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

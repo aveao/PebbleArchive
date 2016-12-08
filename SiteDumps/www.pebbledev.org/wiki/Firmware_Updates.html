@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PebbleDev.org - Firmware Updates</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+</div>
+<div class="container">
+    <a href="Main_Page/index.html"><img src="../images/pebble-logo.png"></a><h1>Firmware Updates</h1>
+</div>
+<div class="container">
+        
+<p>Downloads json information on firmware from <a rel="nofollow" class="external free" href="http://pebblefw.s3.amazonaws.com/pebble/%1/%2/latest.json">http://pebblefw.s3.amazonaws.com/pebble/%1/%2/latest.json</a>.
+</p><p>Parameter&#160;%1 (hardware version) is one of:
+</p>
+<ul>
+<li> unknown
+</li>
+<li> ev1
+</li>
+<li> ev2
+</li>
+<li> ev2_3
+</li>
+<li> ev2_4
+</li>
+<li> bigboard
+</li>
+<li> v1_5
+</li>
+<li> v2_0 <i>(Steel)</i>
+</li>
+<li> snowy_evt2 <i>(some kind of Pebble Time)</i>
+</li>
+<li> snowy_dvt <i>(some kind of Pebble Time)</i>
+</li>
+<li> snowy_bb <i>(QEMU for PebbleTime/basalt platform)</i>
+</li>
+<li> snowy_bb2
+</li>
+</ul>
+<p>Note that only ev2_4, bigboard, v1_5 and v2_0 seems to work currently. 
+EV 2.4 is the kickstarter and early backers shipping version (along with hacker special version) - Bigboard is the original large test version. v1_5 is the currently shipping version.
+</p><p>Parameter&#160;%2 is one of:
+</p>
+<ul>
+<li> nightly
+</li>
+<li> beta
+</li>
+<li> release
+</li>
+<li> release-v2
+</li>
+<li> release-v3
+</li>
+</ul>
+<p>ev2_4 and v1_5 have nightly as well as release, and bigboard only has release.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Firmware_Updates.html#Json_format"><span class="tocnumber">1</span> <span class="toctext">Json format</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Firmware_Updates.html#Known_Firmware_Versions"><span class="tocnumber">2</span> <span class="toctext">Known Firmware Versions</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="Firmware_Updates.html#PBZ_updates"><span class="tocnumber">3</span> <span class="toctext">PBZ updates</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="Firmware_Updates.html#Tintin_firmware_file"><span class="tocnumber">4</span> <span class="toctext">Tintin firmware file</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="Firmware_Updates.html#Disassembling_the_file"><span class="tocnumber">4.1</span> <span class="toctext">Disassembling the file</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Firmware_Updates.html#Device_Connections_to_STM32F205_cpu"><span class="tocnumber">4.2</span> <span class="toctext">Device Connections to STM32F205 cpu</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h3><span class="mw-headline" id="Json_format">Json format</span></h3>
+<p>The json for each firmware has two entries. One for recovery and one for normal.
+An example for the release firmware for ev2_4 is shown below:
+</p>
+<pre>{
+   "recovery": {
+       "url": "<a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/recovery_ev2_4_v1.5.2.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/recovery_ev2_4_v1.5.2.pbz</a>",
+       "timestamp": 1356919500,
+       "notes": "Official Recovery Firmware",
+       "friendlyVersion": "v1.5.2",
+       "sha-256": "1ca285d65d80b48b90bab85c5f9e54c907414adffa6f1168beec8aac5d6f32a2"
+   },
+   "normal": {
+       "url": "<a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.7.1.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.7.1.pbz</a>",
+       "timestamp": 1358897692,
+       "notes": "Pebble OS v1.7.1",
+       "friendlyVersion": "v1.7.1",
+       "sha-256": "8cd22fbb9a5f2e3637c44c6de44ab2e0c470b431d00536a3ac284e5e4fc3a0d7"
+   }
+}
+</pre>
+<h3><span class="mw-headline" id="Known_Firmware_Versions">Known Firmware Versions</span></h3>
+<p>These are firmware versions posted to the nightly at various times. The url that is being checked is: <a rel="nofollow" class="external free" href="http://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/latest.json">http://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/latest.json</a>
+</p>
+<ul>
+<li> Jan 23rd - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.7.1.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.7.1.pbz</a>
+</li>
+<li> Feb 11th - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.8.1.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.8.1.pbz</a>
+</li>
+<li> Feb 17th - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-68-g7bd09e2.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-68-g7bd09e2.pbz</a>
+</li>
+<li> Feb 20th - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-77-gacc793d.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-77-gacc793d.pbz</a>
+</li>
+<li> Feb 21st - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-87-ga627942.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-87-ga627942.pbz</a>
+</li>
+<li> Feb 22nd - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-89-g4905c42.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-89-g4905c42.pbz</a>
+</li>
+<li> Feb 23rd - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-93-g7fa1955.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-93-g7fa1955.pbz</a>
+</li>
+<li> Feb 28th - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-152-g18ee0eb.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.1-152-g18ee0eb.pbz</a>
+</li>
+<li> Mar 6th - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-190-geb63c67.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-190-geb63c67.pbz</a>
+</li>
+<li> Mar 8th - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-205-g12c6f2e.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-205-g12c6f2e.pbz</a>
+</li>
+<li> Mar 12th - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-215-g91c2b18.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-215-g91c2b18.pbz</a>
+</li>
+<li> Mar 13th (1) - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-224-g9ffcc04.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-224-g9ffcc04.pbz</a>
+</li>
+<li> Mar 13th (2) - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-232-gd0a8b37.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-232-gd0a8b37.pbz</a>
+</li>
+<li> Mar 14th - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-249-g82c3d1f.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/nightly/pbz/normal_ev2_4_v1.8.2-249-g82c3d1f.pbz</a>
+</li>
+<li> Mar 18th - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.9.0.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.9.0.pbz</a>
+</li>
+<li> Mar 26th - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.9.1.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.9.1.pbz</a>
+</li>
+<li> April 12th - <a rel="nofollow" class="external free" href="https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.10.0.pbz">https://pebblefw.s3.amazonaws.com/pebble/ev2_4/release/pbz/normal_ev2_4_v1.10.0.pbz</a> <a href="V1.10_Firmware_Analysis.html" title="V1.10 Firmware Analysis">V1.10 Firmware Analysis</a>
+</li>
+</ul>
+<h3><span class="mw-headline" id="PBZ_updates">PBZ updates</span></h3>
+<p>Each pbz file is simply a zip file containing zero or one system_resources.pbpack, a manifest.json and tintin_fw.bin.
+The tintin_fw.bin is a raw binary that the pebble runs directly. (placed at 0x0 on the flash memory).
+</p><p>The system_resources.pbpack is a proprietary file format specifically for the pebble. At this point, I'm unsure whether the app reads it or the pebble reads it. The file contains a number of images and fonts used by the pebble, such as watchface icons or the first-run screen.
+</p><p>I haven't quite nailed down the format yet, but what I have is here (all offsets are inclusive):
+</p>
+<table style="border-collapse: collapse; border: 1px solid #000">
+
+<tr>
+<th> Address
+</th>
+<th> Description
+</th></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0x0
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>Number of resources
+</p>
+</td></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0x4-0x7
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>CRC of 0x101C-EOF (all resource data without header)
+</p>
+</td></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0x8-0xB
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>Timestamp - unknown purpose
+</p>
+</td></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0xC-0x1B
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>Version string (see below)
+</p>
+</td></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0x1C-0x101B
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>Resource entries (See below)
+</p>
+</td></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0x101c
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>Data
+</p>
+</td></tr></table>
+<p>The resource entries starts at 0x1c and consists of the following four fields (offsets are from start of each entry segment):
+</p>
+<table style="border-collapse: collapse; border: 1px solid #000">
+
+<tr>
+<th>Address
+</th>
+<th> Description
+</th></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0x0
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>Index of resource
+</p>
+</td></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0x4
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>Offset of resource
+</p>
+</td></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0x8
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>Size of resource
+</p>
+</td></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0xC
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>CRC of resource
+</p>
+</td></tr></table>
+<p>The file contains three different types of data:
+</p>
+<ul>
+<li>"png": Bitmaps containing images. See <a href="Resource_Image_Format.html" title="Resource Image Format">Resource Image Format</a>.
+</li>
+<li>"png-trans": Some other kind of bitmap. Appears to be using the same <a href="Resource_Image_Format.html" title="Resource Image Format">Resource Image Format</a>, but with some changes. Every png-trans image appears to be listed twice in the resource list.
+</li>
+<li>"font": A font file. See <a href="Resource_Font_Format.html" title="Resource Font Format">Resource Font Format</a>.
+</li>
+</ul>
+<p>Now you can extracting resources using <a rel="nofollow" class="external text" href="https://github.com/xndcn/pebble-firmware-utils.git">pebble-firmware-utils</a>
+</p><p>It must be noted that in newer firmware versions (from 2.0-BETA1) the format is slightly changed: there is no more Version string, so all the remaining parts are shifted by 16 bytes.
+To unpack such files you may use updated utility from <a rel="nofollow" class="external text" href="https://github.com/MarSoft/pebble-firmware-utils.git">repository fork</a>
+</p>
+<h2><span class="mw-headline" id="Tintin_firmware_file">Tintin firmware file</span></h2>
+<p>The tintin_fw.bin is a 'raw' binary for the STM32F205 cpu in a fairly standard Cortex M-3 format. 
+It should be noted that there is a custom bootloader at the primary entry point of the CPU. 
+At present time, we do not have a dump of this bootloader, but we know that it loads the tintin_fw.bin at the address 0x8010000, after which the reset vector table is pointed at this address, the stackpointer is setup and the PC register is loaded with the entry point.
+</p><p>For firmwares v3.0-dp entry loading address was 0x8000000. For v3.0 it is 0x8004000.
+</p><p>In practice this means it has a structure similar to the following (each element is one unsigned integer, e.g. 4 bytes):
+</p>
+<table class="table table-bordered">
+<tr>
+<th> Offset
+</th>
+<th> Description
+</th></tr>
+<tr>
+<td>0x0
+</td>
+<td>Address of stack top
+</td></tr>
+<tr>
+<td>0x4
+</td>
+<td>Entry point of binary (memory/flash address)
+</td></tr>
+<tr>
+<td>0x8-0x180
+</td>
+<td> Interrupt handlers
+</td></tr>
+<tr>
+<td>0x198-end
+</td>
+<td>Code &amp; resources etc
+</td></tr></table>
+<h3><span class="mw-headline" id="Disassembling_the_file">Disassembling the file</span></h3>
+<p>Some minor notes on disassembling.
+</p>
+<ul>
+<li> Binary needs to be set to load at 0x8010000
+</li>
+<li> CPU should be set to thumb/thumb2-only, with the ARMv7-M architechture.
+</li>
+<li> The code starts at the entry point as described above. 
+</li>
+<li> In the 1.8 firmware, the code explicitly loads the SP address into the SP register.
+</li>
+<li> If loaded like this in a suitable disassembler, string references are correct and code disassembles nicely.
+</li>
+<li> Once loaded, it can benefitial to look for accesses to specific memory mapped registers (UART, I2C, SPI etc)
+</li>
+</ul>
+<p><br />
+</p>
+<h3><span class="mw-headline" id="Device_Connections_to_STM32F205_cpu">Device Connections to STM32F205 cpu</span></h3>
+<p>The accelerometer appears to be connected to I2C1.
+</p>
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/jquery-1.11.3.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

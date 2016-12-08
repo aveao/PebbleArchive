@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PebbleDev.org - Protocol</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+</div>
+<div class="container">
+    <a href="Main_Page/index.html"><img src="../images/pebble-logo.png"></a><h1>Protocol</h1>
+</div>
+<div class="container">
+        
+<p>I suck at wiki formatting but here's the info. There is an implementation of the protocol in python available at <a rel="nofollow" class="external text" href="https://github.com/PebbleDev/libpebble">Github</a>.
+</p><p>Messages from the phone to the Pebble consist of two short ints and a payload of a number of bytes. The first short is the number of bytes, the second short is the "endpoint id". These represent different types of messages.
+</p><p>Responses from the Pebble to the phone follow the same format.
+</p><p>Format:
+</p>
+<table class="table table-bordered">
+
+<tr>
+<th> Offset
+</th>
+<th> Size
+</th>
+<th> Description
+</th></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0x0
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>0x2
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>Number of bytes in payload
+</p>
+</td></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0x2
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>0x2
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>endpoint id
+</p>
+</td></tr>
+<tr>
+<td style="border-style: solid; border-width: 1px">
+<p>0x4
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>Number of bytes in payload (max 4k bytes)
+</p>
+</td>
+<td style="border-style: solid; border-width: 1px">
+<p>The actual data. This varies depending on endpoint id.
+</p>
+</td></tr></table>
+<h2><span class="mw-headline" id="Known_endpoint_IDs">Known endpoint IDs</span></h2>
+<table class="table table-bordered">
+<tr>
+<th> Endpoint ID
+</th>
+<th> Name
+</th></tr>
+<tr>
+<td> 1
+</td>
+<td>  FIRMWARE</a>
+</td></tr>
+<tr>
+<td> 11
+</td>
+<td>  TIME</a>
+</td></tr>
+<tr>
+<td> 16
+</td>
+<td>  VERSIONS</a>
+</td></tr>
+<tr>
+<td> 17
+</td>
+<td>  PHONE_VERSION</a>
+</td></tr>
+<tr>
+<td> 18
+</td>
+<td> <a href="Protocol/SYSTEM_MESSAGE.html" title="Protocol/SYSTEM MESSAGE"> SYSTEM_MESSAGE</a>
+</td></tr>
+<tr>
+<td> 32
+</td>
+<td>  MUSIC_CONTROL</a>
+</td></tr>
+<tr>
+<td> 33
+</td>
+<td>  PHONE_CONTROL</a>
+</td></tr>
+<tr>
+<td> 2000
+</td>
+<td>  LOGS</a>
+</td></tr>
+<tr>
+<td> 2001
+</td>
+<td>  PING</a>
+</td></tr>
+<tr>
+<td> 2002
+</td>
+<td>  DRAW</a>
+</td></tr>
+<tr>
+<td> 2003
+</td>
+<td> <a href="Protocol/RESET.html" title="Protocol/RESET"> RESET</a>
+</td></tr>
+<tr>
+<td> 2004
+</td>
+<td>  APP/MFG</a>
+</td></tr>
+<tr>
+<td> 3000
+</td>
+<td>  NOTIFICATION</a>
+</td></tr>
+<tr>
+<td> 4000
+</td>
+<td>  RESOURCE</a>
+</td></tr>
+<tr>
+<td> 5000
+</td>
+<td>  SYS_REG</a>
+</td></tr>
+<tr>
+<td> 5001
+</td>
+<td>  FCT_REG</a>
+</td></tr>
+<tr>
+<td> 6000
+</td>
+<td>  APP_INSTALL_MANAGER</a>
+</td></tr>
+<tr>
+<td> 7000
+</td>
+<td>  RUNKEEPER</a>
+</td></tr>
+<tr>
+<td> 48879
+</td>
+<td>  PUT_BYTES</a>
+</td></tr>
+<tr>
+<td> 65535
+</td>
+<td> MAX_ENDPOINT
+</td></tr></table>
+
+
+
+
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/jquery-1.11.3.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

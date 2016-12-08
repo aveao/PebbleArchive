@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PebbleDev.org - Software</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+</div>
+<div class="container">
+    <a href="Main_Page/index.html"><img src="../images/pebble-logo.png"></a><h1>Software</h1>
+</div>
+<div class="container">
+        
+<p>FreeRTOS based
+</p><p>the firmware bin file (tintin_fw.bin) is a fairly standard STM32/Cortex M3 format, meaning:
+</p>
+<ul>
+<li> The first 4 bytes is the address of the stack pointer. This points at the SRAM.
+</li>
+<li> The next 4 bytes is the address of the reset handler - this points into an address in flash memory (somewhere in the 0x8000000 region - this is also the base address for the bin essentially.)
+</li>
+<li> The next 4*XX bytes are addresses for irq handlers
+</li>
+</ul>
+<p>It is important to note that Cortex M3 is a thumb-only cpu, but since it's ARM, it still technically follows the same rules as processors that do support ARM instructions. This means that the reset handler address is odd, so if one is trying to disassemble a pebble binary, the address will be e.g. 0x802eafd, but the first instruction is actually at (0x802eafd &amp; (~0x1)) == 0x802eafc. This matters in e.g. IDA Pro&#160;;)
+</p>
+<h3><span class="mw-headline" id="Others">Others</span></h3>
+<ul>
+<li> <a href="Applications.html" title="Applications">Applications</a>
+</li>
+<li> <a href="Firmware_Updates.html" title="Firmware Updates">Firmware Updates</a>
+</li>
+</ul>
+
+
+
+
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/jquery-1.11.3.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

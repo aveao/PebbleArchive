@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PebbleDev.org - Libpebble</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+</div>
+<div class="container">
+    <a href="Main_Page/index.html"><img src="../images/pebble-logo.png"></a><h1>Libpebble</h1>
+</div>
+<div class="container">
+        
+<p>libpebble is an open source python library for communicating with the Pebble watch.
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="Libpebble.html#Features"><span class="tocnumber">1</span> <span class="toctext">Features</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="Libpebble.html#Compatibility"><span class="tocnumber">2</span> <span class="toctext">Compatibility</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="Libpebble.html#Mac_OS_X"><span class="tocnumber">2.1</span> <span class="toctext">Mac OS X</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="Libpebble.html#Linux"><span class="tocnumber">2.2</span> <span class="toctext">Linux</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="Libpebble.html#Windows"><span class="tocnumber">2.3</span> <span class="toctext">Windows</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="Libpebble.html#Autodetection"><span class="tocnumber">2.4</span> <span class="toctext">Autodetection</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="Libpebble.html#Getting_Started"><span class="tocnumber">3</span> <span class="toctext">Getting Started</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="Libpebble.html#Downloading_libpebble"><span class="tocnumber">3.1</span> <span class="toctext">Downloading libpebble</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="Libpebble.html#p.py"><span class="tocnumber">4</span> <span class="toctext">p.py</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="Libpebble.html#Setting_Pebble_id"><span class="tocnumber">4.1</span> <span class="toctext">Setting Pebble id</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="Libpebble.html#Commands"><span class="tocnumber">4.2</span> <span class="toctext">Commands</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Features">Features</span></h2>
+<p>libpebble contains a Pebble class that can be used for 
+</p>
+<ul>
+<li> Sending email and SMS notifications to Pebble
+</li>
+<li> Updating song metadata displayed on Pebble
+</li>
+<li> Listing all installed apps
+</li>
+<li> Installing, reinstalling, and removing an app
+</li>
+<li> Retrieving and setting the time stored on Pebble
+</li>
+<li> Installing firmware
+</li>
+<li> Sending system messages to Pebble
+</li>
+<li> Pinging Pebble
+</li>
+<li> Reseting Pebble
+</li>
+<li> Register Endpoints for a variety of different messages from Pebble
+</li>
+</ul>
+<p>Also included is a command line tool called p.py that allows you to use most features of the Pebble class.
+</p>
+<h2><span class="mw-headline" id="Compatibility">Compatibility</span></h2>
+<p>libpebble was first developed on Mac OS X, but it also works in some shape or form on Linux and Windows.
+</p>
+<h3><span class="mw-headline" id="Mac_OS_X">Mac OS X</span></h3>
+<p>Everything works as expected.
+</p>
+<h3><span class="mw-headline" id="Linux">Linux</span></h3>
+<h3><span class="mw-headline" id="Windows">Windows</span></h3>
+<h3><span class="mw-headline" id="Autodetection">Autodetection</span></h3>
+<p>Currently, autodetection is only implemented for Mac OS X systems.
+</p>
+<h2><span class="mw-headline" id="Getting_Started">Getting Started</span></h2>
+<h3><span class="mw-headline" id="Downloading_libpebble">Downloading libpebble</span></h3>
+<p>libpebble relies on pyserial, so please make sure it is installed before moving on.
+</p><p>The main version of libpebble is currently hosted on Hexxeh's github account.
+</p><p>If you wish to contribute to libpebble, fork it from <a rel="nofollow" class="external text" href="https://github.com/Hexxeh/libpebble/archive/master.zip">Github</a> and send pull requests.
+</p><p>To download the source using git, open terminal, move to where ever you would like to download the source and type 
+</p><p><code>git clone git@github.com:Hexxeh/libpebble.git</code>.
+</p><p>To download a zip of the source click <a rel="nofollow" class="external text" href="https://github.com/Hexxeh/libpebble/archive/master.zip">here</a>.
+</p>
+<h2><span class="mw-headline" id="p.py">p.py</span></h2>
+<p>p.py is a command line interface for libpebble
+</p><p>If you get stuck, type <code>p.py -h</code> for help.
+</p>
+<h3><span class="mw-headline" id="Setting_Pebble_id">Setting Pebble id</span></h3>
+<p>By default, p.py automatically detects Pebbles connected to your computer. However, it is also possible to set which pebble to use with the <code>--pebble_id</code> argument. This allows you to select a pebble by the last four digits of the Pebble's MAC address.
+</p><p><code>p.py --pebble_id 1234 COMMAND</code>
+</p>
+<h3><span class="mw-headline" id="Commands">Commands</span></h3>
+<table class="table table-bordered">
+
+<tr>
+<th> Command </th>
+<th> Result
+</th></tr>
+<tr>
+<td> <code>ping</code> </td>
+<td> pings the Pebble.
+</td></tr>
+<tr>
+<td> <code>load FILE</code> </td>
+<td> loads a compiled app bundle to the Pebble.
+</td></tr>
+<tr>
+<td> <code>load_fw FILE</code> </td>
+<td> loads firmware onto the Pebble.
+</td></tr>
+<tr>
+<td> <code>logcat</code> </td>
+<td> prints logs sent from a connected watch.
+</td></tr>
+<tr>
+<td> <code>list</code> </td>
+<td> lists apps installed on the Pebble
+</td></tr>
+<tr>
+<td> <code>rm IDX</code> </td>
+<td> removes the app installed at the given app index.
+</td></tr>
+<tr>
+<td> <code>reset</code> </td>
+<td> resets the Pebble remotely.
+</td></tr>
+<tr>
+<td> <code>email SENDER SUBJECT BODY</code> </td>
+<td> sends an email notification to the Pebble
+</td></tr>
+<tr>
+<td> <code>sms SENDER BODY</code> </td>
+<td> sends an SMS notification to the Pebble
+</td></tr>
+<tr>
+<td> <code>get_time</code> </td>
+<td> prints the time stored on Pebble
+</td></tr>
+<tr>
+<td> <code>set_time TIMESTAMP</code> </td>
+<td> sets the time stored on Pebble
+</td></tr>
+<tr>
+<td> <code>remote APP</code> </td>
+<td> allows you Pebble to control the music app
+</td></tr></table>
+
+
+
+
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/jquery-1.11.3.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

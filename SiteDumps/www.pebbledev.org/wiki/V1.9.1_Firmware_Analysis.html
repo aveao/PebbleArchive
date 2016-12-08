@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PebbleDev.org - V1.9.1 Firmware Analysis</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+</div>
+<div class="container">
+    <a href="Main_Page/index.html"><img src="../images/pebble-logo.png"></a><h1>V1.9.1 Firmware Analysis</h1>
+</div>
+<div class="container">
+        
+<h3><span class="mw-headline" id="General_PebbleOS_subroutines">General PebbleOS subroutines</span></h3>
+<p>FreeRTOS "main task" for PebbleOS: 0x802e09c
+</p>
+<h3><span class="mw-headline" id="Serial_Console_Command_Prompt">Serial Console Command Prompt</span></h3>
+<p>Note: I wasn't able to find any references to the serial console command prompt in the firmware, so I can't tell how it is reached.  It may be reached by the bootloader somehow, only time will tell when we have a copy of the bootloader.
+</p><p>The command struct starts at 0x80460e4, and starts with the command "help", and then the offset of the help command.  It continues until 0x80465b4, which appears to be the end of the struct.
+</p>
+<ul>
+<li> Command prompt menu function: 0x8018d58
+</li>
+<li> Serial prompt command struct: 0x80460e4
+</li>
+</ul>
+<h2><span class="mw-headline" id="List_of_serial_command_function_offsets">List of serial command function offsets</span></h2>
+<table class="table table-bordered">
+<tr>
+<td><b>Command Name</b>
+</td>
+<td><b>Hex Address</b>
+</td></tr>
+<tr>
+<td>help
+</td>
+<td>8018e90
+</td></tr>
+<tr>
+<td>show log
+</td>
+<td>8018f98
+</td></tr>
+<tr>
+<td>show dog
+</td>
+<td>8018fb1
+</td></tr>
+</table>
+
+
+
+
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/jquery-1.11.3.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PebbleDev.org - Resource Font Format</title>
+
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+</div>
+<div class="container">
+    <a href="Main_Page/index.html"><img src="../images/pebble-logo.png"></a><h1>Resource Font Format</h1>
+</div>
+<div class="container">
+        
+<p>The .pbpack files contain multiple types of resources. There are 16 font resources in firmware v1.9.1, from resource entry 29th to 45th . (res29 and res30 are the same)
+</p><p>In Pebble SDK, there is a python script "pebble-sdk-release-001/sdk/tools/font/fontgen.py" can generate font resource.
+</p><p>The structure for the fonts ("font") files is as follows:
+</p>
+<table class="table table-bordered">
+<tr>
+<th> Offset
+</th>
+<th> Description
+</th></tr>
+<tr>
+<td>0x0
+</td>
+<td> Version
+</td></tr>
+<tr>
+<td>0x1
+</td>
+<td> Max height among all characters. Characters are mostly less or equally high, but sometimes they're slightly higher.
+</td></tr>
+<tr>
+<td>0x2
+</td>
+<td> Number of lookup table entries
+</td></tr>
+<tr>
+<td>0x4
+</td>
+<td> Fail-Safe character (often 13398, a retangle), When Pebble receives character that cannot be identified, decoded, or not in the font library, displays Fail-Safe character.
+</td></tr>
+<tr>
+<td>0x6
+</td>
+<td> Lookup table
+</td></tr>
+<tr>
+<td>0x6 + (Number of lookup table entries * 4)
+</td>
+<td> Actual font data, see Character Images.
+</td></tr></table>
+<h2><span class="mw-headline" id="Lookup_Table_Entries">Lookup Table Entries</span></h2>
+<p>Every entry is 4 bytes long:
+</p>
+<table class="table table-bordered">
+<tr>
+<th> Offset
+</th>
+<th> Description
+</th></tr>
+<tr>
+<td>0x0
+</td>
+<td> 2-byte character
+</td></tr>
+<tr>
+<td>0x2
+</td>
+<td> Offset to actual data, starting form the end of the lookup table
+</td></tr></table>
+<h2><span class="mw-headline" id="Character_Images">Character Images</span></h2>
+<p>Every character bitmap starts at the end of the lookup table + 4 * offset. Empty space is filled with 0x00, so the first 4 bytes after the lookup table are zero's.
+</p><p>It is unknown which bytes indicate the positioning and spacing of the bitmaps when drawing a string.
+</p>
+<table class="table table-bordered">
+<tr>
+<th> Offset
+</th>
+<th> Description
+</th></tr>
+<tr>
+<td>0x0
+</td>
+<td> Width
+</td></tr>
+<tr>
+<td>0x1
+</td>
+<td> Height
+</td></tr>
+<tr>
+<td>0x2
+</td>
+<td> Left margin (signed byte)
+</td></tr>
+<tr>
+<td>0x3
+</td>
+<td> Bottom margin (signed byte)
+</td></tr>
+<tr>
+<td>0x4
+</td>
+<td> Unknown; These 4 bytes, and every next byte only appear if width * height &gt; 0; The last byte seems to be the left margin + width + 1. These 4 bytes possibly indicate the character width + character spacing of a letter, possibly as an integer.
+</td></tr>
+<tr>
+<td>0x8
+</td>
+<td> Bitmap image data. There are NO bits skipped after a scanline. That means this section is exactly ceil(width*height/8) bytes long.
+</td></tr></table>
+<p><br />
+Now you can dive into Font files using SouthWolf's Pebble tools <a rel="nofollow" class="external free" href="https://github.com/southwolf/pebble_tools">https://github.com/southwolf/pebble_tools</a>
+</p>
+
+
+
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/jquery-1.11.3.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>
