@@ -1,0 +1,1 @@
+This is basically a dump of http://pebblefw.s3.amazonaws.com/pebble/%1/%2/latest.json, %1 being hardware variation, %2 being the release channel. This part is just stored for the sake of archival. The versions here may not be the latest recommended versions. For the latest recommended versions, view your device specific folder on /Firmwares/, not on /Firmwares/Extra/.
