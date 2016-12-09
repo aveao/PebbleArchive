@@ -14,3 +14,5 @@ split.py will take a combined JSON file, split it into chunks, and add it to a R
 pbldown.py - doesn't run on it's own, though it could. It's meant to be invoked via rq, a Python batch processing/queueing tool.
 
 sort.py - Will sort all the downloaded data into folders.
+
+# THIS FILE AND THE CODE WAS WRITTEN BY /U/MAGMAPUS [HERE](https://www.reddit.com/r/pebble/comments/5g0gmx/in_light_of_recent_news_i_archived_the_app_store/) - I ONLY DUMPED THAT DATA HERE FOR SAKE OF ARCHIVAL.
