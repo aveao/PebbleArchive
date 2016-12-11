@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"><head><style>body {font-family: sans-serif;}.app {display: flex; width: 100%; min-width: 1000px;}.app-path, .route-path {flex: 0 1 auto; font-weight: bold;}.app-path {margin-top: 1em; line-height: 1.5em;}.routes {flex: 4 1 auto;}.route {margin-top: 1em;}.route-header {display: flex; line-height: 1.5em;}.method {margin-left: 1em; padding: 0 0.5em; color: #555; background-color: #eee;}.desc {flex: 3 1 auto;}</style><title> Route Documentation</title></head><body>   <div class="app"> <div class="app-path">/cohort</div>   <div class="routes">   <div class="route"> <div class="route-header"> <div class="route-path">/</div>   <div class="methods">  <span class="method">get</span>  </div>  </div>  <div class="desc">Responds with the users cohorts, serialized as JSON.</div>    <div class="val"> <pre>{
+  "header": {
+    "type": "object",
+    "children": {
+      "authorization": {
+        "type": "string",
+        "flags": {
+          "presence": "required"
+        },
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "regex",
+            "arg": {}
+          }
+        ]
+      }
+    }
+  },
+  "query": {
+    "select": {
+      "type": "string",
+      "flags": {
+        "presence": "required"
+      },
+      "description": "Select which properties to include in the output",
+      "invalids": [
+        ""
+      ],
+      "rules": [
+        {
+          "name": "regex",
+          "arg": {}
+        }
+      ]
+    },
+    "hardware": {
+      "type": "string",
+      "flags": {
+        "presence": "required",
+        "allowOnly": true
+      },
+      "description": "Type of watch",
+      "valids": [
+        "bb2",
+        "ev2_4",
+        "snowy_bb2",
+        "snowy_dvt",
+        "snowy_evt2",
+        "snowy_s3",
+        "v1_5",
+        "v2_0",
+        "spalding_evt",
+        "spalding",
+        "silk_evt",
+        "robert_evt",
+        "silk"
+      ],
+      "invalids": [
+        ""
+      ]
+    },
+    "mobilePlatform": {
+      "type": "string",
+      "flags": {
+        "presence": "required"
+      },
+      "description": "Phone OS",
+      "invalids": [
+        ""
+      ]
+    },
+    "mobileVersion": {
+      "type": "string",
+      "flags": {
+        "presence": "required"
+      },
+      "description": "Phone OS version",
+      "invalids": [
+        ""
+      ]
+    },
+    "mobileHardware": {
+      "type": "string",
+      "flags": {
+        "presence": "required"
+      },
+      "description": "The type of phone",
+      "invalids": [
+        ""
+      ]
+    },
+    "pebbleAppVersion": {
+      "type": "string",
+      "flags": {
+        "presence": "required"
+      },
+      "description": "The Pebble mobile app version",
+      "invalids": [
+        ""
+      ]
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>  </div>  </div> </body></html>

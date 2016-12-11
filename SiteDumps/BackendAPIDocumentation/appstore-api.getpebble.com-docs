@@ -1,0 +1,2026 @@
+<!DOCTYPE html><html lang="en"><head><style>body {font-family: sans-serif;}.app {display: flex; width: 100%; min-width: 1000px;}.app-path, .route-path {flex: 0 1 auto; font-weight: bold;}.app-path {margin-top: 1em; line-height: 1.5em;}.routes {flex: 4 1 auto;}.route {margin-top: 1em;}.route-header {display: flex; line-height: 1.5em;}.method {margin-left: 1em; padding: 0 0.5em; color: #555; background-color: #eee;}.desc {flex: 3 1 auto;}</style><title> Route Documentation</title></head><body>   <div class="app"> <div class="app-path">/v2/applications</div>   <div class="routes">   <div class="route"> <div class="route-header"> <div class="route-path">/:id/changelog</div>   <div class="methods">  <span class="method">get</span>  </div>  </div>    <div class="val"> <pre>{
+  "params": {
+    "type": "object",
+    "children": {
+      "id": {
+        "type": "string",
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "hex",
+            "arg": {}
+          },
+          {
+            "name": "length",
+            "arg": 24
+          }
+        ]
+      },
+      "firmware_version": {
+        "type": "string",
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "regex",
+            "arg": {}
+          }
+        ]
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "children": {
+      "id": {
+        "type": "string",
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "hex",
+            "arg": {}
+          },
+          {
+            "name": "length",
+            "arg": 24
+          }
+        ]
+      },
+      "changelog": {
+        "type": "array",
+        "flags": {
+          "sparse": false
+        },
+        "rules": [
+          {
+            "name": "max",
+            "arg": 20
+          }
+        ],
+        "items": [
+          {
+            "type": "object",
+            "children": {
+              "version": {
+                "type": "string",
+                "invalids": [
+                  ""
+                ]
+              },
+              "published_date": {
+                "type": "date"
+              },
+              "release_notes": {
+                "type": "string",
+                "valids": [
+                  ""
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>  </div>  </div>   <div class="app"> <div class="app-path">/v2/apps</div>   <div class="routes">   <div class="route"> <div class="route-header"> <div class="route-path">/:type(category|dev|id)/:key/</div>   <div class="methods">  <span class="method">get</span>  </div>  </div>    <div class="val"> <pre>{
+  "params": {
+    "type": "object",
+    "children": {
+      "type": {
+        "type": "any",
+        "valids": [
+          "category",
+          "dev",
+          "id"
+        ]
+      },
+      "key": {
+        "type": "string",
+        "invalids": [
+          ""
+        ]
+      }
+    }
+  },
+  "query": {
+    "type": "object",
+    "children": {
+      "platform": {
+        "type": "string",
+        "valids": [
+          "android",
+          "ios"
+        ],
+        "invalids": [
+          ""
+        ]
+      },
+      "jsv": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "min",
+            "arg": 0
+          }
+        ]
+      },
+      "hardware": {
+        "type": "string",
+        "valids": [
+          "aplite",
+          "basalt",
+          "chalk",
+          "diorite",
+          "emery"
+        ],
+        "invalids": [
+          ""
+        ]
+      },
+      "filter_hardware": {
+        "type": "boolean"
+      },
+      "limit": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "min",
+            "arg": 0
+          },
+          {
+            "name": "max",
+            "arg": 100
+          }
+        ]
+      },
+      "offset": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "min",
+            "arg": 0
+          }
+        ]
+      },
+      "fields": {
+        "type": "string",
+        "invalids": [
+          ""
+        ]
+      },
+      "image_ratio": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "min",
+            "arg": 0
+          },
+          {
+            "name": "max",
+            "arg": 4
+          }
+        ]
+      },
+      "sort": {
+        "type": "any",
+        "valids": [
+          "hearts",
+          "updated"
+        ]
+      },
+      "firmware_version": {
+        "type": "string",
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "regex",
+            "arg": {}
+          }
+        ]
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "children": {
+      "data": {
+        "type": "array",
+        "flags": {
+          "sparse": false
+        }
+      },
+      "offset": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ]
+      },
+      "limit": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ]
+      },
+      "links": {
+        "type": "object"
+      }
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>   <div class="route"> <div class="route-header"> <div class="route-path">/:type(collection)/:collection/:key</div>   <div class="methods">  <span class="method">get</span>  </div>  </div>    <div class="val"> <pre>{
+  "params": {
+    "type": "object",
+    "children": {
+      "type": {
+        "type": "any",
+        "valids": [
+          "showcase"
+        ]
+      },
+      "key": {
+        "type": "string",
+        "invalids": [
+          ""
+        ]
+      },
+      "collection": {
+        "type": "string",
+        "invalids": [
+          ""
+        ]
+      }
+    }
+  },
+  "query": {
+    "type": "object",
+    "children": {
+      "platform": {
+        "type": "string",
+        "valids": [
+          "android",
+          "ios"
+        ],
+        "invalids": [
+          ""
+        ]
+      },
+      "jsv": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "min",
+            "arg": 0
+          }
+        ]
+      },
+      "hardware": {
+        "type": "string",
+        "valids": [
+          "aplite",
+          "basalt",
+          "chalk",
+          "diorite",
+          "emery"
+        ],
+        "invalids": [
+          ""
+        ]
+      },
+      "filter_hardware": {
+        "type": "boolean"
+      },
+      "limit": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "min",
+            "arg": 0
+          },
+          {
+            "name": "max",
+            "arg": 100
+          }
+        ]
+      },
+      "offset": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "min",
+            "arg": 0
+          }
+        ]
+      },
+      "fields": {
+        "type": "string",
+        "invalids": [
+          ""
+        ]
+      },
+      "image_ratio": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "min",
+            "arg": 0
+          },
+          {
+            "name": "max",
+            "arg": 4
+          }
+        ]
+      },
+      "sort": {
+        "type": "any",
+        "valids": [
+          "hearts",
+          "updated"
+        ]
+      },
+      "firmware_version": {
+        "type": "string",
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "regex",
+            "arg": {}
+          }
+        ]
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "children": {
+      "data": {
+        "type": "array",
+        "flags": {
+          "sparse": false
+        }
+      },
+      "offset": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ]
+      },
+      "limit": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ]
+      },
+      "links": {
+        "type": "object"
+      }
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>  </div>  </div>   <div class="app"> <div class="app-path">/v2/home</div>   <div class="routes">   <div class="route"> <div class="route-header"> <div class="route-path">/:type</div>   <div class="methods">  <span class="method">get</span>  </div>  </div>    <div class="val"> <pre>{
+  "params": {
+    "type": "object",
+    "children": {
+      "type": {
+        "type": "any",
+        "valids": [
+          "watchapps-and-companions",
+          "watchfaces",
+          "apps",
+          "faces"
+        ]
+      }
+    }
+  },
+  "query": {
+    "type": "object",
+    "children": {
+      "platform": {
+        "type": "string",
+        "valids": [
+          "android",
+          "ios"
+        ],
+        "invalids": [
+          ""
+        ]
+      },
+      "jsv": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "min",
+            "arg": 0
+          }
+        ]
+      },
+      "hardware": {
+        "type": "string",
+        "valids": [
+          "aplite",
+          "basalt",
+          "chalk",
+          "diorite",
+          "emery"
+        ],
+        "invalids": [
+          ""
+        ]
+      },
+      "filter_hardware": {
+        "type": "boolean"
+      },
+      "fields": {
+        "type": "string",
+        "invalids": [
+          ""
+        ]
+      },
+      "limit": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "min",
+            "arg": 0
+          },
+          {
+            "name": "max",
+            "arg": 100
+          }
+        ]
+      },
+      "image_ratio": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "min",
+            "arg": 0
+          },
+          {
+            "name": "max",
+            "arg": 4
+          }
+        ]
+      },
+      "firmware_version": {
+        "type": "string",
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "regex",
+            "arg": {}
+          }
+        ]
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "children": {
+      "applications": {
+        "type": "array",
+        "flags": {
+          "sparse": false
+        }
+      },
+      "banners": {
+        "type": "array",
+        "flags": {
+          "sparse": false
+        }
+      },
+      "categories": {
+        "type": "array",
+        "flags": {
+          "sparse": false
+        }
+      },
+      "collections": {
+        "type": "array",
+        "flags": {
+          "sparse": false
+        }
+      }
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>  </div>  </div>   <div class="app"> <div class="app-path">/v2/locker</div>   <div class="routes">   <div class="route"> <div class="route-header"> <div class="route-path">/</div>   <div class="methods">  <span class="method">get</span>  </div>  </div>    <div class="val"> <pre>{
+  "query": {
+    "type": "object",
+    "children": {
+      "pageKey": {
+        "type": "string",
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "guid"
+          }
+        ]
+      },
+      "pageSize": {
+        "type": "number",
+        "flags": {
+          "default": 100
+        },
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "integer"
+          },
+          {
+            "name": "max",
+            "arg": 100
+          }
+        ]
+      },
+      "imagePixelRatio": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "min",
+            "arg": 1
+          }
+        ]
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "children": {
+      "applications": {
+        "type": "array",
+        "flags": {
+          "sparse": false
+        }
+      },
+      "nextPageURL": {
+        "type": "string",
+        "valids": [
+          null
+        ],
+        "invalids": [
+          ""
+        ]
+      }
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>   <div class="route"> <div class="route-header"> <div class="route-path">/:uuid</div>   <div class="methods">  <span class="method">put</span>  </div>  </div>  <div class="desc">Adds an application to the users locker.</div>    <div class="val"> <pre>{
+  "query": {
+    "type": "object",
+    "children": {
+      "imagePixelRatio": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "min",
+            "arg": 1
+          }
+        ]
+      }
+    }
+  },
+  "params": {
+    "type": "object",
+    "children": {
+      "uuid": {
+        "type": "alternatives",
+        "alternatives": [
+          {
+            "type": "string",
+            "invalids": [
+              ""
+            ],
+            "rules": [
+              {
+                "name": "guid"
+              }
+            ]
+          },
+          {
+            "type": "string",
+            "invalids": [
+              ""
+            ],
+            "rules": [
+              {
+                "name": "hex",
+                "arg": {}
+              },
+              {
+                "name": "length",
+                "arg": 24
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "children": {
+      "application": {
+        "type": "object",
+        "children": {
+          "id": {
+            "type": "string",
+            "invalids": [
+              ""
+            ],
+            "rules": [
+              {
+                "name": "hex",
+                "arg": {}
+              },
+              {
+                "name": "length",
+                "arg": 24
+              }
+            ]
+          },
+          "uuid": {
+            "type": "string",
+            "invalids": [
+              ""
+            ],
+            "rules": [
+              {
+                "name": "guid"
+              }
+            ]
+          },
+          "user_token": {
+            "type": "string",
+            "valids": [
+              null
+            ],
+            "invalids": [
+              ""
+            ]
+          },
+          "title": {
+            "type": "string",
+            "invalids": [
+              ""
+            ]
+          },
+          "type": {
+            "type": "string",
+            "invalids": [
+              ""
+            ]
+          },
+          "category": {
+            "type": "string",
+            "invalids": [
+              ""
+            ]
+          },
+          "version": {
+            "type": "string",
+            "valids": [
+              null
+            ],
+            "invalids": [
+              ""
+            ]
+          },
+          "hearts": {
+            "type": "number",
+            "invalids": [
+              null,
+              null
+            ],
+            "rules": [
+              {
+                "name": "integer"
+              }
+            ]
+          },
+          "is_configurable": {
+            "type": "boolean"
+          },
+          "is_timeline_enabled": {
+            "type": "boolean"
+          },
+          "links": {
+            "type": "object",
+            "children": {
+              "remove": {
+                "type": "string",
+                "invalids": [
+                  ""
+                ],
+                "rules": [
+                  {
+                    "name": "uri"
+                  }
+                ]
+              },
+              "share": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ],
+                "rules": [
+                  {
+                    "name": "uri"
+                  }
+                ]
+              },
+              "href": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ],
+                "rules": [
+                  {
+                    "name": "uri"
+                  }
+                ]
+              }
+            }
+          },
+          "developer": {
+            "type": "object",
+            "children": {
+              "contact_email": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ],
+                "rules": [
+                  {
+                    "name": "email"
+                  }
+                ]
+              },
+              "id": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ]
+              },
+              "name": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ]
+              }
+            }
+          },
+          "pbw": {
+            "type": "object",
+            "children": {
+              "file": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ],
+                "rules": [
+                  {
+                    "name": "uri"
+                  }
+                ]
+              },
+              "icon_resource_id": {
+                "type": "number",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  null,
+                  null
+                ]
+              },
+              "release_id": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ]
+              }
+            }
+          },
+          "hardware_platforms": {
+            "type": "array",
+            "flags": {
+              "sparse": false
+            },
+            "valids": [
+              null
+            ]
+          },
+          "compatibility": {
+            "type": "object",
+            "children": {
+              "ios": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "min_js_version": {
+                    "type": "number",
+                    "flags": {
+                      "presence": "optional"
+                    },
+                    "valids": [
+                      null
+                    ],
+                    "invalids": [
+                      null,
+                      null
+                    ],
+                    "rules": [
+                      {
+                        "name": "integer"
+                      }
+                    ]
+                  }
+                }
+              },
+              "android": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "aplite": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "firmware": {
+                    "type": "object",
+                    "children": {
+                      "major": {
+                        "type": "number",
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      },
+                      "minor": {
+                        "type": "number",
+                        "flags": {
+                          "presence": "optional"
+                        },
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "basalt": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "firmware": {
+                    "type": "object",
+                    "children": {
+                      "major": {
+                        "type": "number",
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      },
+                      "minor": {
+                        "type": "number",
+                        "flags": {
+                          "presence": "optional"
+                        },
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "chalk": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "firmware": {
+                    "type": "object",
+                    "children": {
+                      "major": {
+                        "type": "number",
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      },
+                      "minor": {
+                        "type": "number",
+                        "flags": {
+                          "presence": "optional"
+                        },
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "diorite": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "firmware": {
+                    "type": "object",
+                    "children": {
+                      "major": {
+                        "type": "number",
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      },
+                      "minor": {
+                        "type": "number",
+                        "flags": {
+                          "presence": "optional"
+                        },
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "emery": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "firmware": {
+                    "type": "object",
+                    "children": {
+                      "major": {
+                        "type": "number",
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      },
+                      "minor": {
+                        "type": "number",
+                        "flags": {
+                          "presence": "optional"
+                        },
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "companions": {
+            "type": "object",
+            "children": {
+              "android": {
+                "type": "object",
+                "valids": [
+                  null
+                ],
+                "children": {
+                  "id": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ]
+                  },
+                  "icon": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "uri"
+                      }
+                    ]
+                  },
+                  "url": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "uri"
+                      }
+                    ]
+                  },
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "pebblekit_version": {
+                    "type": "string",
+                    "valids": [
+                      null
+                    ],
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "regex",
+                        "arg": {}
+                      }
+                    ]
+                  }
+                }
+              },
+              "ios": {
+                "type": "object",
+                "valids": [
+                  null
+                ],
+                "children": {
+                  "id": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ]
+                  },
+                  "icon": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "uri"
+                      }
+                    ]
+                  },
+                  "url": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "uri"
+                      }
+                    ]
+                  },
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "pebblekit_version": {
+                    "type": "string",
+                    "valids": [
+                      null
+                    ],
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "regex",
+                        "arg": {}
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>   <div class="route"> <div class="route-header"> <div class="route-path">/:uuid</div>   <div class="methods">  <span class="method">get</span>  </div>  </div>    <div class="val"> <pre>{
+  "query": {
+    "type": "object",
+    "children": {
+      "imagePixelRatio": {
+        "type": "number",
+        "invalids": [
+          null,
+          null
+        ],
+        "rules": [
+          {
+            "name": "min",
+            "arg": 1
+          }
+        ]
+      }
+    }
+  },
+  "params": {
+    "type": "object",
+    "children": {
+      "uuid": {
+        "type": "string",
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "guid"
+          }
+        ]
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "children": {
+      "application": {
+        "type": "object",
+        "children": {
+          "id": {
+            "type": "string",
+            "invalids": [
+              ""
+            ],
+            "rules": [
+              {
+                "name": "hex",
+                "arg": {}
+              },
+              {
+                "name": "length",
+                "arg": 24
+              }
+            ]
+          },
+          "uuid": {
+            "type": "string",
+            "invalids": [
+              ""
+            ],
+            "rules": [
+              {
+                "name": "guid"
+              }
+            ]
+          },
+          "user_token": {
+            "type": "string",
+            "valids": [
+              null
+            ],
+            "invalids": [
+              ""
+            ]
+          },
+          "title": {
+            "type": "string",
+            "invalids": [
+              ""
+            ]
+          },
+          "type": {
+            "type": "string",
+            "invalids": [
+              ""
+            ]
+          },
+          "category": {
+            "type": "string",
+            "invalids": [
+              ""
+            ]
+          },
+          "version": {
+            "type": "string",
+            "valids": [
+              null
+            ],
+            "invalids": [
+              ""
+            ]
+          },
+          "hearts": {
+            "type": "number",
+            "invalids": [
+              null,
+              null
+            ],
+            "rules": [
+              {
+                "name": "integer"
+              }
+            ]
+          },
+          "is_configurable": {
+            "type": "boolean"
+          },
+          "is_timeline_enabled": {
+            "type": "boolean"
+          },
+          "links": {
+            "type": "object",
+            "children": {
+              "remove": {
+                "type": "string",
+                "invalids": [
+                  ""
+                ],
+                "rules": [
+                  {
+                    "name": "uri"
+                  }
+                ]
+              },
+              "share": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ],
+                "rules": [
+                  {
+                    "name": "uri"
+                  }
+                ]
+              },
+              "href": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ],
+                "rules": [
+                  {
+                    "name": "uri"
+                  }
+                ]
+              }
+            }
+          },
+          "developer": {
+            "type": "object",
+            "children": {
+              "contact_email": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ],
+                "rules": [
+                  {
+                    "name": "email"
+                  }
+                ]
+              },
+              "id": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ]
+              },
+              "name": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ]
+              }
+            }
+          },
+          "pbw": {
+            "type": "object",
+            "children": {
+              "file": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ],
+                "rules": [
+                  {
+                    "name": "uri"
+                  }
+                ]
+              },
+              "icon_resource_id": {
+                "type": "number",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  null,
+                  null
+                ]
+              },
+              "release_id": {
+                "type": "string",
+                "valids": [
+                  null
+                ],
+                "invalids": [
+                  ""
+                ]
+              }
+            }
+          },
+          "hardware_platforms": {
+            "type": "array",
+            "flags": {
+              "sparse": false
+            },
+            "valids": [
+              null
+            ]
+          },
+          "compatibility": {
+            "type": "object",
+            "children": {
+              "ios": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "min_js_version": {
+                    "type": "number",
+                    "flags": {
+                      "presence": "optional"
+                    },
+                    "valids": [
+                      null
+                    ],
+                    "invalids": [
+                      null,
+                      null
+                    ],
+                    "rules": [
+                      {
+                        "name": "integer"
+                      }
+                    ]
+                  }
+                }
+              },
+              "android": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "aplite": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "firmware": {
+                    "type": "object",
+                    "children": {
+                      "major": {
+                        "type": "number",
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      },
+                      "minor": {
+                        "type": "number",
+                        "flags": {
+                          "presence": "optional"
+                        },
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "basalt": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "firmware": {
+                    "type": "object",
+                    "children": {
+                      "major": {
+                        "type": "number",
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      },
+                      "minor": {
+                        "type": "number",
+                        "flags": {
+                          "presence": "optional"
+                        },
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "chalk": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "firmware": {
+                    "type": "object",
+                    "children": {
+                      "major": {
+                        "type": "number",
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      },
+                      "minor": {
+                        "type": "number",
+                        "flags": {
+                          "presence": "optional"
+                        },
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "diorite": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "firmware": {
+                    "type": "object",
+                    "children": {
+                      "major": {
+                        "type": "number",
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      },
+                      "minor": {
+                        "type": "number",
+                        "flags": {
+                          "presence": "optional"
+                        },
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "emery": {
+                "type": "object",
+                "children": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "firmware": {
+                    "type": "object",
+                    "children": {
+                      "major": {
+                        "type": "number",
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      },
+                      "minor": {
+                        "type": "number",
+                        "flags": {
+                          "presence": "optional"
+                        },
+                        "invalids": [
+                          null,
+                          null
+                        ],
+                        "rules": [
+                          {
+                            "name": "integer"
+                          },
+                          {
+                            "name": "min",
+                            "arg": 0
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "companions": {
+            "type": "object",
+            "children": {
+              "android": {
+                "type": "object",
+                "valids": [
+                  null
+                ],
+                "children": {
+                  "id": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ]
+                  },
+                  "icon": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "uri"
+                      }
+                    ]
+                  },
+                  "url": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "uri"
+                      }
+                    ]
+                  },
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "pebblekit_version": {
+                    "type": "string",
+                    "valids": [
+                      null
+                    ],
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "regex",
+                        "arg": {}
+                      }
+                    ]
+                  }
+                }
+              },
+              "ios": {
+                "type": "object",
+                "valids": [
+                  null
+                ],
+                "children": {
+                  "id": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ]
+                  },
+                  "icon": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "uri"
+                      }
+                    ]
+                  },
+                  "url": {
+                    "type": "string",
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "uri"
+                      }
+                    ]
+                  },
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "pebblekit_version": {
+                    "type": "string",
+                    "valids": [
+                      null
+                    ],
+                    "invalids": [
+                      ""
+                    ],
+                    "rules": [
+                      {
+                        "name": "regex",
+                        "arg": {}
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>   <div class="route"> <div class="route-header"> <div class="route-path">/:uuid</div>   <div class="methods">  <span class="method">delete</span>  </div>  </div>    <div class="val"> <pre>{
+  "params": {
+    "type": "object",
+    "children": {
+      "uuid": {
+        "type": "string",
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "guid"
+          }
+        ]
+      }
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>  </div>  </div> </body></html>

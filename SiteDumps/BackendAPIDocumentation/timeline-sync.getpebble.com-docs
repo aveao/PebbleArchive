@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"><head><style>body {font-family: sans-serif;}.app {display: flex; width: 100%; min-width: 1000px;}.app-path, .route-path {flex: 0 1 auto; font-weight: bold;}.app-path {margin-top: 1em; line-height: 1.5em;}.routes {flex: 4 1 auto;}.route {margin-top: 1em;}.route-header {display: flex; line-height: 1.5em;}.method {margin-left: 1em; padding: 0 0.5em; color: #555; background-color: #eee;}.desc {flex: 3 1 auto;}</style><title> Route Documentation</title></head><body>   <div class="app"> <div class="app-path">/v1/sync</div>   <div class="routes">   <div class="route"> <div class="route-header"> <div class="route-path">/</div>   <div class="methods">  <span class="method">get</span>  </div>  </div>    <div class="val"> <pre>{
+  "query": {
+    "syncKey": {
+      "type": "string",
+      "flags": {
+        "presence": "optional"
+      },
+      "invalids": [
+        ""
+      ]
+    },
+    "syncPinsPageSize": {
+      "type": "number",
+      "flags": {
+        "presence": "optional"
+      },
+      "invalids": [
+        null,
+        null
+      ],
+      "rules": [
+        {
+          "name": "min",
+          "arg": 2
+        },
+        {
+          "name": "max",
+          "arg": 200
+        }
+      ]
+    }
+  },
+  "header": {
+    "type": "object",
+    "flags": {
+      "allowUnknown": true
+    },
+    "children": {
+      "pebble-sync-include": {
+        "type": "string",
+        "flags": {
+          "presence": "optional"
+        },
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "regex",
+            "arg": {}
+          }
+        ]
+      }
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>  </div>  </div>   <div class="app"> <div class="app-path">/v1/tokens</div>   <div class="routes">   <div class="route"> <div class="route-header"> <div class="route-path">/sandbox/:uuid</div>   <div class="methods">  <span class="method">get</span>  </div>  </div>    <div class="val"> <pre>{
+  "params": {
+    "uuid": {
+      "type": "string",
+      "flags": {
+        "presence": "required"
+      },
+      "invalids": [
+        ""
+      ],
+      "rules": [
+        {
+          "name": "guid"
+        }
+      ]
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>  </div>  </div> </body></html>
