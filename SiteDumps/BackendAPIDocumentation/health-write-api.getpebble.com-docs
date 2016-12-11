@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="en"><head><style>body {font-family: sans-serif;}.app {display: flex; width: 100%; min-width: 1000px;}.app-path, .route-path {flex: 0 1 auto; font-weight: bold;}.app-path {margin-top: 1em; line-height: 1.5em;}.routes {flex: 4 1 auto;}.route {margin-top: 1em;}.route-header {display: flex; line-height: 1.5em;}.method {margin-left: 1em; padding: 0 0.5em; color: #555; background-color: #eee;}.desc {flex: 3 1 auto;}</style><title> Route Documentation</title></head><body>   <div class="app"> <div class="app-path">/v1/activity</div>   <div class="routes">   <div class="route"> <div class="route-header"> <div class="route-path">/</div>   <div class="methods">  <span class="method">post</span>  </div>  </div>    <div class="val"> <pre>{
+  "type": "json",
+  "body": {
+    "steps": {
+      "type": "array",
+      "flags": {
+        "sparse": false,
+        "presence": "optional"
+      },
+      "items": [
+        {
+          "type": "array",
+          "flags": {
+            "sparse": false
+          }
+        }
+      ]
+    },
+    "sleep": {
+      "type": "array",
+      "flags": {
+        "sparse": false,
+        "presence": "optional"
+      },
+      "items": [
+        {
+          "type": "array",
+          "flags": {
+            "sparse": false
+          }
+        }
+      ]
+    },
+    "activity": {
+      "type": "array",
+      "flags": {
+        "sparse": false,
+        "presence": "optional"
+      },
+      "items": [
+        {
+          "type": "array",
+          "flags": {
+            "sparse": false
+          }
+        }
+      ]
+    },
+    "watch": {
+      "type": "object",
+      "flags": {
+        "presence": "required"
+      },
+      "children": {
+        "hwVersion": {
+          "type": "string",
+          "flags": {
+            "presence": "required"
+          },
+          "invalids": [
+            ""
+          ]
+        },
+        "serialNumber": {
+          "type": "string",
+          "flags": {
+            "presence": "required"
+          },
+          "invalids": [
+            ""
+          ]
+        },
+        "firmwareVersion": {
+          "type": "string",
+          "flags": {
+            "presence": "required"
+          },
+          "invalids": [
+            ""
+          ]
+        },
+        "locale": {
+          "type": "string",
+          "flags": {
+            "presence": "optional"
+          },
+          "valids": [
+            ""
+          ]
+        }
+      }
+    },
+    "phone": {
+      "type": "object",
+      "flags": {
+        "presence": "required"
+      },
+      "children": {
+        "platform": {
+          "type": "string",
+          "flags": {
+            "allowOnly": true,
+            "presence": "required"
+          },
+          "valids": [
+            "android",
+            "ios"
+          ],
+          "invalids": [
+            ""
+          ]
+        },
+        "appVersion": {
+          "type": "string",
+          "flags": {
+            "presence": "required"
+          },
+          "invalids": [
+            ""
+          ]
+        },
+        "locale": {
+          "type": "string",
+          "flags": {
+            "presence": "optional"
+          },
+          "valids": [
+            ""
+          ]
+        }
+      }
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>  </div>  </div>   <div class="app"> <div class="app-path">/v1/settings</div>   <div class="routes">   <div class="route"> <div class="route-header"> <div class="route-path">/</div>   <div class="methods">  <span class="method">post</span>  </div>  </div>    <div class="val"> <pre>{
+  "type": "json",
+  "body": {
+    "height": {
+      "type": "number",
+      "flags": {
+        "presence": "required"
+      },
+      "invalids": [
+        null,
+        null
+      ],
+      "rules": [
+        {
+          "name": "min",
+          "arg": 0
+        },
+        {
+          "name": "max",
+          "arg": 65535
+        }
+      ]
+    },
+    "weight": {
+      "type": "number",
+      "flags": {
+        "presence": "required"
+      },
+      "invalids": [
+        null,
+        null
+      ],
+      "rules": [
+        {
+          "name": "min",
+          "arg": 0
+        },
+        {
+          "name": "max",
+          "arg": 65535
+        }
+      ]
+    },
+    "age": {
+      "type": "number",
+      "flags": {
+        "presence": "required"
+      },
+      "invalids": [
+        null,
+        null
+      ],
+      "rules": [
+        {
+          "name": "min",
+          "arg": 0
+        },
+        {
+          "name": "max",
+          "arg": 255
+        }
+      ]
+    },
+    "gender": {
+      "type": "string",
+      "flags": {
+        "presence": "required",
+        "allowOnly": true
+      },
+      "valids": [
+        "male",
+        "female",
+        "other",
+        null
+      ],
+      "invalids": [
+        ""
+      ]
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>  </div>  </div> </body></html>
