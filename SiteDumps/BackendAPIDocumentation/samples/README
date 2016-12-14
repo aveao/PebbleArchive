@@ -1,0 +1,85 @@
+dev-portal links are deprecated, and only return 2.x apps. Use appstore-api.getpebble.com ones.
+
+These are mostly from links here (shoutout to the person who posted this on pebble formerly-official dev discord):
+
+[konrad@konrad-laptop pebble-origsign-4.3.0-1355-904fed2]$ grep -r "pebble.com" .
+./smali/com/getpebble/android/config/a.smali:    const-string v2, "https://boot.getpebble.com/api/config"
+./smali/com/getpebble/android/common/a/a.smali:    const-string v2, ".getpebble.com"
+./res/values-de/strings.xml:    <string name="support_email_address">support@getpebble.com</string>
+./res/values-de/strings.xml:    <string name="support_email_body">"Verwende dieses Formular, um uns zu kontaktieren, wenn du eine Pebble besitzt und Schwierigkeiten hast. Besuche bei allen anderen Anfragen, Fragen und Problemen bitte help.getpebble.com. 
+./res/values-pt/strings.xml:    <string name="support_email_address">support@getpebble.com</string>
+./res/values-pt/strings.xml:    <string name="support_email_body">"Utilize este formulÃ¡rio para entrar em contacto connosco se tiver atualmente um Pebble e se sentir quaisquer dificuldades. Para outros pedidos, dÃºvidas e questÃµes, procure ajuda no Site help.getpebble.com.
+./res/values-fr/strings.xml:    <string name="support_email_address">support@getpebble.com</string>
+./res/values-fr/strings.xml:    <string name="support_email_body">"Veuillez utiliser ce formulaire pour contacter Pebble si vous Ãªtes en possession dâ€™une Pebble et que vous rencontrez des difficultÃ©s. Pour toute autre requÃªtes, questions et problÃ¨mes, veuillez consulter help.getpebble.com.
+./res/values-fr/strings.xml:    <string name="support_getting_started_summary">Pour en savoir plus sur Pebble, consultez le site help.getpebble.com</string>
+./res/values/strings.xml:    <string name="support_email_address">support@getpebble.com</string>
+./res/values/strings.xml:having difficulties. For all other queries, questions and issues, please check help.getpebble.com.
+./res/values/strings.xml:    <string name="battery_support_email">support-batt@getpebble.com</string>
+./res/values/strings.xml:    <string name="connect_support_email">support-connect@getpebble.com</string>
+./res/values/strings.xml:    <string name="health_support_email">support-hlth@getpebble.com</string>
+./res/values/strings.xml:    <string name="helpdesk_url">http://help.pebble.com</string>
+./res/values/strings.xml:    <string name="notification_support_email">support-notif@getpebble.com</string>
+./res/values/strings.xml:    <string name="support_email">support@getpebble.com</string>
+./res/values-es/strings.xml:    <string name="support_email_address">support@getpebble.com</string>
+./res/values-es/strings.xml:    <string name="support_email_body">"Utiliza este formulario para contactar con nosotros si ya tienes un Pebble y estÃ¡s experimentando algÃºn tipo de problema. Para otras consultas, preguntas o problemas, ve a help.getpebble.com. 
+./res/values-it/strings.xml:    <string name="support_email_address">support@getpebble.com</string>
+./res/values-it/strings.xml:    <string name="support_email_body">"Ti preghiamo di usare questo formulario per contattarci se hai Pebble e stai incontrando difficoltÃ . Per qualsiasi altra questione, dubbio o problema, consulta help.getpebble.com.
+./assets/default_boot_config.json:        "href": "https://boot.getpebble.com/api/config/android/v3/905",
+./assets/default_boot_config.json:            "resources": "https://dev-portal.getpebble.com/api?platform=android",
+./assets/default_boot_config.json:            "authentication/push_tokens": "https://auth.getpebble.com/api/v1/push_tokens?platform=android",
+./assets/default_boot_config.json:            "authentication/me": "https://auth.getpebble.com/api/v1/me.json?platform=android",
+./assets/default_boot_config.json:            "apps/categories": "https://dev-portal.getpebble.com/api/categories?platform=android",
+./assets/default_boot_config.json:            "apps/app_index": "https://dev-portal.getpebble.com/api/categories/index?platform=android",
+./assets/default_boot_config.json:            "apps/face_index": "https://dev-portal.getpebble.com/api/categories/faces?platform=android",
+./assets/default_boot_config.json:            "apps/uuid_upgrades": "https://dev-portal.getpebble.com/api/applications/upgrade?platform=android",
+./assets/default_boot_config.json:            "apps/failed_upgrades": "https://dev-portal.getpebble.com/api/failed_upgrades?platform=android",
+./assets/default_boot_config.json:            "users/app_locker": "https://dev-portal.getpebble.com/api/users/locker?platform=android",
+./assets/default_boot_config.json:            "users/me": "https://dev-portal.getpebble.com/api/users/me?platform=android",
+./assets/default_boot_config.json:            "remote_device_analytics": "https://pb-collector.getpebble.com/analytics",
+./assets/default_boot_config.json:            "i18n/language_packs": "https://lp.getpebble.com/v1/languages",
+./assets/default_boot_config.json:            "diagnostics": "https://auth-api.getpebble.com/api/v2/users/diagnostics",
+./assets/default_boot_config.json:            "get_endpoint": "https://appstore-api.getpebble.com/v2/locker",
+./assets/default_boot_config.json:            "add_endpoint": "https://appstore-api.getpebble.com/v2/locker/$$app_uuid$$",
+./assets/default_boot_config.json:            "remove_endpoint": "https://appstore-api.getpebble.com/v2/locker/$$app_uuid$$",
+./assets/default_boot_config.json:            "sign_in": "https://auth-api.getpebble.com/oauth/token",
+./assets/default_boot_config.json:            "sign_up": "https://auth-api.getpebble.com/oauth/token",
+./assets/default_boot_config.json:            "refresh_token": "https://auth-api.getpebble.com/oauth/token",
+./assets/default_boot_config.json:                "domain": ".getpebble.com",
+./assets/default_boot_config.json:            "loading/buy_a_pebble": "https://getpebble.com?utm_campaign=PebbleApp&utm_medium=referral&utm_source=android-start-screen",
+./assets/default_boot_config.json:            "authentication/sign_in": "https://auth-client.getpebble.com/en_US/?platform=android&release_id=905&ap_version=3.7.0&mid=$$phone_id$$&pid=$$pebble_id$$&platform=android&redirect_uri=pebble%3A%2F%2Flogin",
+./assets/default_boot_config.json:            "authentication/sign_up": "https://auth-client.getpebble.com/en_US/signup?platform=android&release_id=905&ap_version=3.7.0&mid=$$phone_id$$&pid=$$pebble_id$$&platform=android&redirect_uri=pebble%3A%2F%2Flogin",
+./assets/default_boot_config.json:            "onboarding/get_some_apps": "https://apps.getpebble.com/en_US/onboarding/getsomeapps?platform=android&release_id=905&app_version=3.7.0&pebble_color=$$pebble_color$$&hardware=$$hardware$$&uid=$$user_id$$&mid=$$phone_id$$&pid=$$pebble_id$$&$$extras$$",
+./assets/default_boot_config.json:            "onboarding/migrate": "https://apps.getpebble.com/en_US/onboarding/migrate?platform=android&release_id=905&app_version=3.7.0&pebble_color=$$pebble_color$$&hardware=$$hardware$$&uid=$$user_id$$&mid=$$phone_id$$&pid=$$pebble_id$$&$$extras$$",
+./assets/default_boot_config.json:            "onboarding/get_more_info": "http://help.getpebble.com/customer/portal/articles/1422148-migration",
+./assets/default_boot_config.json:            "appstore/watchapps": "https://apps.getpebble.com/en_US/watchapps?platform=android&release_id=905&app_version=3.7.0&pebble_color=$$pebble_color$$&hardware=$$hardware$$&uid=$$user_id$$&mid=$$phone_id$$&pid=$$pebble_id$$&$$extras$$",
+./assets/default_boot_config.json:            "appstore/watchfaces": "https://apps.getpebble.com/en_US/watchfaces?platform=android&release_id=905&app_version=3.7.0&pebble_color=$$pebble_color$$&hardware=$$hardware$$&uid=$$user_id$$&mid=$$phone_id$$&pid=$$pebble_id$$&$$extras$$",
+./assets/default_boot_config.json:            "appstore/developer_apps": "https://apps.getpebble.com/en_US/developer/$$id$$?platform=android&release_id=905&app_version=3.7.0&pebble_color=$$pebble_color$$&hardware=$$hardware$$&uid=$$user_id$$&mid=$$phone_id$$&pid=$$pebble_id$$&$$extras$$",
+./assets/default_boot_config.json:            "appstore/application": "https://apps.getpebble.com/en_US/application/$$id$$?platform=android&release_id=905&app_version=3.7.0&pebble_color=$$pebble_color$$&hardware=$$hardware$$&uid=$$user_id$$&mid=$$phone_id$$&pid=$$pebble_id$$&$$extras$$",
+./assets/default_boot_config.json:            "appstore/application_changelog": "https://apps.getpebble.com/en_US/changelog/$$id$$?platform=android&release_id=905&app_version=3.7.0&pebble_color=$$pebble_color$$&hardware=$$hardware$$&uid=$$user_id$$&mid=$$phone_id$$&pid=$$pebble_id$$&$$extras$$",
+./assets/default_boot_config.json:            "appstore/application_share":"https://apps.getpebble.com/en_US/application/$$id$$",
+./assets/default_boot_config.json:            "appstore/search": "https://apps.getpebble.com/en_US/search?platform=android&release_id=905&app_version=3.7.0&pebble_color=$$pebble_color$$&hardware=$$hardware$$&uid=$$user_id$$&mid=$$phone_id$$&pid=$$pebble_id$$&$$extras$$",
+./assets/default_boot_config.json:            "appstore/search/query": "https://apps.getpebble.com/en_US/search/$$search_type$$?native=true&query=$$query$$&platform=android&release_id=905&app_version=3.7.0&pebble_color=$$pebble_color$$&hardware=$$hardware$$&uid=$$user_id$$&mid=$$phone_id$$&pid=$$pebble_id$$&$$extras$$",
+./assets/default_boot_config.json:            "support/bt_findcode_help": "http://help.getpebble.com/customer/en/portal/articles/1422126",
+./assets/default_boot_config.json:            "support/bt_pairing_help": "http://help.getpebble.com/customer/en/portal/articles/1774338",
+./assets/default_boot_config.json:            "support/fw_update_failed_help": "http://help.getpebble.com/customer/en/portal/articles/1738034",
+./assets/default_boot_config.json:            "support/getting_started": "http://help.getpebble.com/customer/en/portal/articles/1936231?b_id=8309",
+./assets/default_boot_config.json:            "support/faq": "http://help.getpebble.com/customer/en/portal/articles/1949825-faq?b_id=8309",
+./assets/default_boot_config.json:            "support/community": "http://help.getpebble.com/customer/en/portal/articles/1422153",
+./assets/default_boot_config.json:            "support/suggest_something": "http://help.getpebble.com/customer/en/portal/articles/1889438?b_id=8309",
+./assets/default_boot_config.json:            "support/android-actionable-notifications": "http://help.getpebble.com/customer/en/portal/articles/1819783",
+./assets/default_boot_config.json:            "onboarding/privacy_policy": "https://www.pebble.com/legal/privacy#",
+./assets/default_boot_config.json:            "onboarding/sms_privacy_policy": "https://www.pebble.com/legal/privacy#sms"
+./assets/default_boot_config.json:            "sync_endpoint": "https://timeline-sync.getpebble.com/v1/sync",
+./assets/default_boot_config.json:            "sandbox_user_token": "https://timeline-sync.getpebble.com/v1/tokens/sandbox/$$uuid$$",
+./assets/default_boot_config.json:            "subscribe_to_topic": "https://timeline-api.getpebble.com/v1/user/subscriptions/$$topic_id$$",
+./assets/default_boot_config.json:            "subscriptions_list": "https://timeline-api.getpebble.com/v1/user/subscriptions"
+./assets/default_boot_config.json:            "endpoint": "https://cohorts.getpebble.com/cohort"
+./assets/default_boot_config.json:            "email": "support@getpebble.com"
+./assets/default_boot_config.json:            "authorize_sessions_endpoint": "https://linked-accounts.getpebble.com/v1/providers/$$provider$$/authorize/sessions?state=$$state$$",
+./assets/default_boot_config.json:            "account_refresh_endpoint": "https://linked-accounts.getpebble.com/v1/providers/$$provider$$/refresh",
+./assets/default_boot_config.json:            "account_revoke_endpoint": "https://linked-accounts.getpebble.com/v1/providers/$$provider$$/revoke",
+./assets/default_boot_config.json:            "sms_send_endpoint": "https://sms-api.getpebble.com/v1/sms/actions/send/$$transaction_id$$",
+./assets/default_boot_config.json:            "email_action_endpoint": "https://email-actions-api.getpebble.com/v1/email/actions/$$action$$/$$transaction_id$$"
+./assets/webview_startup.js:    return "https://timeline-api.getpebble.com/v1/user/subscriptions/" + encodedTopic;
+./assets/webview_startup.js:    return "https://timeline-api.getpebble.com/v1/user/subscriptions";
+

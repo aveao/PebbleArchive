@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><style>body {font-family: sans-serif;}.app {display: flex; width: 100%; min-width: 1000px;}.app-path, .route-path {flex: 0 1 auto; font-weight: bold;}.app-path {margin-top: 1em; line-height: 1.5em;}.routes {flex: 4 1 auto;}.route {margin-top: 1em;}.route-header {display: flex; line-height: 1.5em;}.method {margin-left: 1em; padding: 0 0.5em; color: #555; background-color: #eee;}.desc {flex: 3 1 auto;}</style><title> Route Documentation</title></head><body>   <div class="app"> <div class="app-path">/v1</div>   <div class="routes">   <div class="route"> <div class="route-header"> <div class="route-path">/debug</div>   <div class="methods">  <span class="method">post</span>  </div>  </div>    <div class="val"> <pre>{
+  "header": {
+    "type": "object",
+    "flags": {
+      "allowUnknown": true
+    },
+    "children": {
+      "content-type": {
+        "type": "string",
+        "flags": {
+          "allowOnly": true,
+          "presence": "required"
+        },
+        "valids": [
+          "application/octet-stream"
+        ],
+        "invalids": [
+          ""
+        ]
+      }
+    }
+  },
+  "query": {
+    "apiKey": {
+      "type": "string",
+      "flags": {
+        "presence": "required"
+      },
+      "invalids": [
+        ""
+      ]
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>   <div class="route"> <div class="route-header"> <div class="route-path">/topic/:topic</div>   <div class="methods">  <span class="method">post</span>  </div>  </div>    <div class="val"> <pre>{
+  "header": {
+    "type": "object",
+    "flags": {
+      "allowUnknown": true
+    },
+    "children": {
+      "content-type": {
+        "type": "string",
+        "flags": {
+          "allowOnly": true,
+          "presence": "required"
+        },
+        "valids": [
+          "application/octet-stream"
+        ],
+        "invalids": [
+          ""
+        ]
+      },
+      "authorization": {
+        "type": "string",
+        "flags": {
+          "presence": "required"
+        },
+        "invalids": [
+          ""
+        ],
+        "rules": [
+          {
+            "name": "regex",
+            "arg": {}
+          }
+        ]
+      }
+    }
+  },
+  "failure": 400
+}</pre> </div>  </div>  </div>  </div> </body></html>
